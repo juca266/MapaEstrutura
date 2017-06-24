@@ -11,24 +11,24 @@
   	char ldir[TAM];			//String lado direito
   }s_no;
   
-  void AddArvore(struct s_no *noa, int *i, int *a, int *e) //Função para adicionar nome a arvore
+  void AddArvore(struct s_no *abc, int *i, int *a, int *e) //Função para adicionar nome a arvore
   {
-
+	system("cls");									//Limpa a tela
   	printf("\nDigite seu nome:");
-  		scanf("%s", (*(noa+*i)).pai);
+  		scanf("%s", (*(abc+*i)).pai);
   		
   		do{	
 		fflush(stdin);	 								//Limpa o buffer do teclado
-		printf("\nNome do Pai de %s:",(*(noa+*i)).pai);	
-		scanf("%s",(*(noa+*i)).lesq);					//Adiciona o nome do Pai
-		printf("\nNome da Mãe de %s:",(*(noa+*i)).pai);	
-		scanf("%s",(*(noa+*i)).ldir);					//Adiciona o nome da Mae
-		strcpy ((*(noa+*a)).pai, (*(noa+*i)).lesq);		//Coloca o nome do Pai como proximo filho
-		strcpy ((*(noa+*e)).pai, (*(noa+*i)).ldir);		//Coloca o nome da mae logo apos o do pai como filho
 		system("cls");									//Limpa a tela
+		printf("\nNome do Pai de %s:",(*(abc+*i)).pai);	
+		scanf("%s",(*(abc+*i)).lesq);					//Adiciona o nome do Pai
+		printf("\nNome da Mãe de %s:",(*(abc+*i)).pai);	
+		scanf("%s",(*(abc+*i)).ldir);					//Adiciona o nome da Mae
+		strcpy ((*(abc+*a)).pai, (*(abc+*i)).lesq);		//Coloca o nome do Pai como proximo filho
+		strcpy ((*(abc+*e)).pai, (*(abc+*i)).ldir);		//Coloca o nome da mae logo apos o do pai como filho
 		*a=*a+2;
 		*e=*e+2;											//Muda a contagem
-		*i++;
+		*i=*i+1;
 		}while(*i<7);
   }
   
@@ -36,9 +36,11 @@
   {
 
   	printf("\n=============Árvore Genealógica=============");
-	for(*i=0; *i<7; *i++){
+  	*i=0;
+	do{
 	printf("\nFilho:%s Pai:%s Mãe:%s",(*(noa+*i)).pai, (*(noa+*i)).lesq, (*(noa+*i)).ldir);	//Exibe os nomes
-		}
+	*i=*i+1;
+	}while(*i<7);
 	printf("\n============================================\n");
   }
 
@@ -48,9 +50,11 @@
   	int op=0, i=0, a=1, e=2;							//Variaveis de contagens
   	
   	do{
+  	printf("\n====================Menu====================\n");
   	printf("1 Para preencher árvore\n2 Para mostrar árvore\n0 Para sair\nEscolha uma opção:");
   	scanf("%d",&op);
-  	
+  	printf("\n============================================\n");
+
   	switch(op){											//Inicia o Menu
 	
   	case 1 :
@@ -59,7 +63,15 @@
   	
   	case 2 :
   		MostraArvore(noa, &i);							//Chama a funcao de mostrar a arvore
+  	break;
+  	
+  	case 0 :
+  		exit(0);
+  		
+  	default :
+  	printf("Opção invalida");
   	}
+
   }while(op!=0);
   	
 }
