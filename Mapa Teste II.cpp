@@ -11,7 +11,9 @@
   	char ldir[TAM];			//String lado direito
   }s_no;
   
+  void AddArvore(struct s_no *noa, int *i, int *a, int *e) //Função para adicionar nome a arvore
   {
+
   	printf("\nDigite seu nome:");
   		scanf("%s", (*(noa+*i)).pai);
   		
@@ -19,15 +21,13 @@
 		fflush(stdin);	 								//Limpa o buffer do teclado
 		printf("\nNome do Pai de %s:",(*(noa+*i)).pai);	
 		scanf("%s",(*(noa+*i)).lesq);					//Adiciona o nome do Pai
-		printf("\nNome da Mï¿½e de %s:",(*(noa+*i)).pai);	
+		printf("\nNome da Mãe de %s:",(*(noa+*i)).pai);	
 		scanf("%s",(*(noa+*i)).ldir);					//Adiciona o nome da Mae
 		strcpy ((*(noa+*a)).pai, (*(noa+*i)).lesq);		//Coloca o nome do Pai como proximo filho
 		strcpy ((*(noa+*e)).pai, (*(noa+*i)).ldir);		//Coloca o nome da mae logo apos o do pai como filho
 		system("cls");									//Limpa a tela
-		*a++;
-		*e++;
-		*a++;											//Muda a contagem
-		*e++;
+		*a=*a+2;
+		*e=*e+2;											//Muda a contagem
 		*i++;
 		}while(*i<7);
   }
@@ -35,11 +35,11 @@
   void MostraArvore(struct s_no *noa, int *i)			//Funcao para exibir a arvore
   {
 
-  	printf("\n=============ï¿½rvore Genealï¿½gica=============");
+  	printf("\n=============Árvore Genealógica=============");
 	for(*i=0; *i<7; *i++){
-	printf("\nFilho:%s Pai:%s Mï¿½e:%s",(*(noa+*i)).pai, (*(noa+*i)).lesq, (*(noa+*i)).ldir);	//Exibe os nomes
+	printf("\nFilho:%s Pai:%s Mãe:%s",(*(noa+*i)).pai, (*(noa+*i)).lesq, (*(noa+*i)).ldir);	//Exibe os nomes
 		}
-	printf("\n============================================");
+	printf("\n============================================\n");
   }
 
   int main(void){
@@ -47,8 +47,9 @@
     s_no noa[TAM];										//Define o vetor do tipo s_no
   	int op=0, i=0, a=1, e=2;							//Variaveis de contagens
   	
-  	printf("1 Para preencher ï¿½rvore\n2 Para mostrar ï¿½rvore\nEscolha uma opï¿½ï¿½o:");
-  	scanf("%d",op);
+  	do{
+  	printf("1 Para preencher árvore\n2 Para mostrar árvore\n0 Para sair\nEscolha uma opção:");
+  	scanf("%d",&op);
   	
   	switch(op){											//Inicia o Menu
 	
@@ -59,7 +60,7 @@
   	case 2 :
   		MostraArvore(noa, &i);							//Chama a funcao de mostrar a arvore
   	}
-  	return(0);
+  }while(op!=0);
   	
 }
 
