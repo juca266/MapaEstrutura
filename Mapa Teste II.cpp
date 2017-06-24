@@ -14,6 +14,9 @@
   void AddArvore(struct s_no *abc, int *i, int *a, int *e) //Função para adicionar nome a arvore
   {
 	system("cls");									//Limpa a tela
+	*i=0;
+	*a=1;
+	*e=2;
   	printf("\nDigite seu nome:");
   		scanf("%s", (*(abc+*i)).pai);
   		
