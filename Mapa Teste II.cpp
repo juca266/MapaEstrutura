@@ -48,7 +48,7 @@
   	int op=0, i=0, a=1, e=2;							//Variaveis de contagens
   	
   	printf("1 Para preencher �rvore\n2 Para mostrar �rvore\nEscolha uma op��o:");
-  	scanf("%d",op);
+  	scanf("%d",&op);
   	
   	switch(op){											//Inicia o Menu
 	
